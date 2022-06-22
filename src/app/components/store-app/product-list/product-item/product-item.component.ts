@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
 
-  constructor() { }
+  produtos: any;
+  sotreService: StoreService;
+
+  constructor(storeService: StoreService) {
+    this.storeService = storeService;
+   }
 
   ngOnInit(): void {
+    this.produtos = this.sotreService.getStore().subscribe((data: any) => {
+      this.produtos = data;
+
+    })
   }
 
 }
